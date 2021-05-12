@@ -7,6 +7,7 @@ Data under data/ directory and model under bart directory
 
 Inside data directory, the generation folder is used to store and 
 process data for inferencing only. You may run the inferencing like following:
+
     cd data/generation/
     sh run_generation.sh <TARGET>.jsonl
     cd ../../bart
@@ -14,11 +15,13 @@ process data for inferencing only. You may run the inferencing like following:
     sh generate_output.sh GPU_NUMBER generation MODEL_DIR BEAM_SIZE MIN_LEN
 
 for example:
+
     cd data/generation/
     sh run_generation.sh test.jsonl
     cd ../../bart
     sh preprocess_generation.sh generation
     sh generation_output.sh 1,2 generation /local/diq/kptimes 1 16
+
 the output file will be in bart/logs directory with name output_test_1_16.hypo
 
 For training the process is similar, you just change the dir to data/self_train
