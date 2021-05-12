@@ -1,5 +1,12 @@
 This repo is based on Wasi's NeuralKPGen repo. 
 
+We use fairseq for bart. The library version we used is:
+    
+    torch 1.8.0
+    fairseq 0.10.2
+    spacy 2.1.9
+    NLTK 3.4.5
+
 During modification, to make sure the code work correctly,
 some code might be redudant.
 
@@ -39,3 +46,4 @@ you want the trained model to be save
 Notice that the parameters for each script are little different
 The last two numbers are epochs and batch size
 I've include a file called covid_test.jsonl as a sample for you to create your own test file
+
