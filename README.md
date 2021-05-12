@@ -32,8 +32,10 @@ for example
     sh run.sh
     cd ../../bart
     sh preprocess_train.sh
-    sh generation_output.sh 1,2 self_train 10 4
+    sh run.sh 1,2 self_train bart.base/model.pt /local/diq/self_train_checkpoints 10 4
 
+The third parameter is the model you trained from, the forth one is where 
+you want the trained model to be save
 Notice that the parameters for each script are little different
 The last two numbers are epochs and batch size
 I've include a file called covid_test.jsonl as a sample for you to create your own test file
