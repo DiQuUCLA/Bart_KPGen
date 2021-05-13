@@ -2,8 +2,8 @@
 
 SRCDIR=data
 mkdir -p logs
-TOTAL_EPOCHS=$3
-BATCH_SIZE=$4
+TOTAL_EPOCHS=$5
+BATCH_SIZE=$6
 
 function train () {
 
@@ -13,8 +13,8 @@ LR=3e-05
 MAX_TOKENS=4096
 UPDATE_FREQ=4
 ARCH=bart_base # bart_large
-BART_PATH=kptimes_checkpoints/checkpoint_best.pt # bart.large/model.pt
-SAVE_DIR="/local/diq/${DATASET}_checkpoints"
+BART_PATH=$3 # bart.large/model.pt
+SAVE_DIR=$4
 
 fairseq-train ${SRCDIR}/${DATASET}-bin/ \
 --restore-file $BART_PATH \
@@ -52,7 +52,7 @@ SAVE_DIR_PREFIX=$3
 python decode.py \
 --data_name_or_path "$SRCDIR/${DATASET}-bin/" \
 --data_dir "$SRCDIR/${DATASET}/" \
---checkpoint_dir /local/diq/${SAVE_DIR_PREFIX}_checkpoints \
+--checkpoint_dir $SAVE_DIR_PREFIX \
 --checkpoint_file checkpoint_best.pt \
 --output_file logs/${DATASET}_test.hypo \
 --batch_size 64 \
@@ -99,7 +99,7 @@ elif [[ $2 == 'kptimes' ]]; then
     decode "$1" $2 $2
     evaluate ${SRCDIR}/${2} "logs/${2}_test.hypo" $2
 elif [[ $2 == 'self_train' ]]; then
-    train "$1" $2
-    decode "$1" $2 $2
+    train "$1" $2 $3 $4
+    decode "$1" $2 $4
     evaluate ${SRCDIR}/${2} "logs/${2}_test.hypo" $2
 fi
