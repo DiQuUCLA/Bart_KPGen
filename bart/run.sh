@@ -57,7 +57,7 @@ python decode.py \
 --output_file logs/${DATASET}_test.hypo \
 --batch_size 64 \
 --beam 1 \
---min_len 24 \
+--min_len 1 \
 --lenpen 1.0 \
 --no_repeat_ngram_size 3 \
 --max_len_b 60;
