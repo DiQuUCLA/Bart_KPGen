@@ -12,6 +12,18 @@ some code might be redudant.
 
 Data under data/ directory and model under bart directory
 
+***************************************************
+To train on KPTimes:
+
+    cd data/kptimes/
+    sh run.sh
+    cd ../../bart
+    sh preprocess_train.sh
+    sh run.sh 1,2 kptimes bart.base/model.pt <Model Checkpoint Save Dir> [EPOCHS] [BATCH_SIZE]
+
+***************************************************
+To only predict, put the file in the data/generation/ dir, then:
+
 Inside data directory, the generation folder is used to store and 
 process data for inferencing only. You may run the inferencing like following:
 
@@ -27,7 +39,7 @@ for example:
     sh run_generation.sh test.jsonl
     cd ../../bart
     sh preprocess_generation.sh generation
-    sh generation_output.sh 1,2 generation /local/diq/kptimes 1 16
+    sh generation_output.sh 1,2 generation /local/diq/kptimes [BEAM_SIZE] [MIN_LEN]
 
 the output file will be in bart/logs directory with name output_test_1_16.hypo
 
@@ -39,7 +51,7 @@ for example
     sh run.sh
     cd ../../bart
     sh preprocess_train.sh
-    sh run.sh 1,2 self_train bart.base/model.pt /local/diq/self_train_checkpoints 10 4
+    sh run.sh 1,2 self_train bart.base/model.pt <Model Checkpoint Save Dir> [EPOCHS] [BATCH_SIZE]
 
 The third parameter is the model you trained from, the forth one is where 
 you want the trained model to be save

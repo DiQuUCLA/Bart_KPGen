@@ -19,7 +19,7 @@ for filename in "encoder.json" "vocab.bpe" "dict.txt"; do
 done
 
 if [[ ! -d $SRCDIR ]]; then
-    python agg_data.py
+    python agg_generation_data.py
 fi
 
 DICT_FILE=bart.base/dict.txt # dict.txt
@@ -85,7 +85,7 @@ fairseq-preprocess \
 }
 
 # aggregate data first
-python agg_data.py
+python agg_generation_data.py
 
 TASK=generation
 bpe_preprocess_test_only

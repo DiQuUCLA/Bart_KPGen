@@ -89,14 +89,14 @@ while getopts ":h" option; do
 done
 
 if [[ $2 == 'kp20k' ]]; then
-    train "$1" $2
+    train "$1" $2 
     for dataset in kp20k inspec krapivin nus semeval; do
         decode "$1" $dataset $2
         evaluate ${SRCDIR}/${dataset} "logs/${dataset}_test.hypo" $dataset
     done
 elif [[ $2 == 'kptimes' ]]; then
-    train "$1" $2
-    decode "$1" $2 $2
+    train "$1" $2 $3 $4
+    decode "$1" $2 $4
     evaluate ${SRCDIR}/${2} "logs/${2}_test.hypo" $2
 elif [[ $2 == 'self_train' ]]; then
     train "$1" $2 $3 $4
