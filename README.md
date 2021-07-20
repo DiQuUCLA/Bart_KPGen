@@ -18,7 +18,7 @@ To train on KPTimes:
     cd data/kptimes/
     sh run.sh
     cd ../../bart
-    sh preprocess_train.sh
+    sh preprocess.sh
     sh run.sh 1,2 kptimes bart.base/model.pt <Model Checkpoint Save Dir> [EPOCHS] [BATCH_SIZE]
 
 ***************************************************
