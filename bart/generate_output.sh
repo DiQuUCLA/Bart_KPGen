@@ -93,4 +93,4 @@ while getopts ":h" option; do
 done
 
 decode "$1" $2 $3 $4 $5
-evaluate ${SRCDIR}/${2} "logs/taboola_test_"$4"_"$5".hypo" $2
+evaluate ${SRCDIR}/${2} "logs/output_test_"$4"_"$5".hypo" $2
